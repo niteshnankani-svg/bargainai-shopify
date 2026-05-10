@@ -42,9 +42,9 @@ def health():
 
 # ===== STEP 1 — INSTALL (OAuth start) =====
 @app.get("/")
-def install(shop: str = None, request: Request = None):
-    if not shop:
-        return HTMLResponse("""
+async def install(request: Request):
+    shop = request.query_params.get("shop")
+    return HTMLResponse("""
         <html><body style="font-family:sans-serif;padding:2rem;text-align:center">
         <h1>BargainAI</h1>
         <p>India's first AI dukandaar for Shopify stores</p>
